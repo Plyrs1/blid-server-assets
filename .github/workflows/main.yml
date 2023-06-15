@@ -28,3 +28,9 @@ jobs:
 
       - name: Check what we got
         run: ls -R
+
+      - name: Build the thing!
+        run: bash ./build.sh
+
+      - name: Check again what we got
+        run: ls -R
