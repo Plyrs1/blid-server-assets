@@ -33,6 +33,11 @@ jobs:
       - name: Check what we got
         run: ls -R
 
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
+          
       - name: Build the thing!
         run: |
           chmod +x ./modpackager/ModPackager && \
