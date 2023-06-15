@@ -37,7 +37,7 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.101
-          
+
       - name: Build the thing!
         run: |
           chmod +x ./modpackager/ModPackager && \
@@ -45,3 +45,10 @@ jobs:
 
       - name: Check again what we got
         run: ls -R
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            ./output/*
+            !./output/README.md
