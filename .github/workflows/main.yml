@@ -46,10 +46,38 @@ jobs:
       - name: Check again what we got
         run: ls -R
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+      # - name: Upload artifacts
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: modpack
+      #     path: |
+      #       ./output/*
+      #       !./output/README.md
+      
+      # - name: Create Release
+      #   id: create_release
+      #   uses: actions/create-release@latest
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }} # This token is provided by Actions, you do not need to create your own token
+      #   with:
+      #     tag_name: ${{ github.ref }}
+      #     release_name: Release ${{ github.ref }}
+      #     draft: true
+      #     prerelease: false
+
+      # - name: Upload Modpack
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ github.token }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+      #     asset_path: ./output/*.zip
+      #     asset_name: release_unix.zip
+      #     asset_content_type: application/zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        # if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: modpack
-          path: |
+          files: |
             ./output/*
-            !./output/README.md
