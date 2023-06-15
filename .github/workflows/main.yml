@@ -34,7 +34,7 @@ jobs:
         run: ls -R
 
       - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 3.1.101
 
@@ -49,6 +49,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
+          name: modpack
           path: |
             ./output/*
             !./output/README.md
