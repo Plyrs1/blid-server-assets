@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Download ModPackager
         run: |
-          gh release download --repo SoapboxRaceWorld/ModPackager 2.1.0
+          gh release download --repo SoapboxRaceWorld/ModPackager v2.1.0
         env:
           GH_TOKEN: ${{ github.token }}
       - name: Check what we got
