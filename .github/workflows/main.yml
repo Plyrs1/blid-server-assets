@@ -18,19 +18,25 @@ jobs:
 
       - name: Download ModPackager
         run: |
-          gh release download --repo SoapboxRaceWorld/ModPackager v2.1.0 -p "release_unix.zip" -O /tmp/release_unix.zip
+          gh release download \
+          --repo SoapboxRaceWorld/ModPackager v2.1.0 \
+          -p "release_unix.zip" \
+          -O /tmp/release_unix.zip
         env:
           GH_TOKEN: ${{ github.token }}
 
       - name: Extract ModPackager
         run: | 
-          unzip -j "/tmp/release_unix.zip" "release_unix/*" -d "./modpackager"
+          unzip -j "/tmp/release_unix.zip" "release_unix/*" \
+          -d "./modpackager"
 
       - name: Check what we got
         run: ls -R
 
       - name: Build the thing!
-        run: bash ./build.sh
+        run: |
+          chmod +x /modpackager/ModPackager && \
+          bash ./build.sh
 
       - name: Check again what we got
         run: ls -R
