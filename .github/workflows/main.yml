@@ -35,7 +35,7 @@ jobs:
 
       - name: Build the thing!
         run: |
-          chmod +x /modpackager/ModPackager && \
+          chmod +x ./modpackager/ModPackager && \
           bash ./build.sh
 
       - name: Check again what we got
